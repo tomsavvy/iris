@@ -1,0 +1,74 @@
+#:kivy 1.8.0
+
+<SidePanel>:
+    orientation: 'vertical'
+    spacing: 1
+
+    MenuItem:
+        text: 'page one'
+
+    MenuItem:
+        text: 'page two'
+
+    MenuItem:
+        text: 'page three'
+
+
+<AppActionBar>:
+    pos_hint: {'top':1}
+    ActionView:
+        use_separator: True
+        ActionMenu:
+            title: 'AndroidApp'
+            with_previous: False
+            app_icon: 'atlas://data/images/defaulttheme/splitter_grip'
+            on_press: self.menu()
+        ActionOverflow:
+        ActionQuit:
+            text: 'Fine'
+            icon: 'atlas://data/images/defaulttheme/close'
+            on_press: self.menu()
+
+<MainPanel>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    AppButton:
+        id: bottone
+        nome_bottone: bottone
+        text: 'AppExec'
+        on_press: self.app_pushed()
+        on_release: self.app_pushed()
+
+<PageThree>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    Image:
+        source: 'zz.jpg'
+
+<PageTwo>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    Label:
+        text: 'due'
+
+<PageOne>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    Label:
+        text: 'applicazione'
