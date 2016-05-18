@@ -5,13 +5,16 @@
     spacing: 1
 
     MenuItem:
-        text: 'page one'
+        text: 'Home Page'
 
     MenuItem:
-        text: 'page two'
+        text: 'Recent Commands'
 
     MenuItem:
-        text: 'page three'
+        text: 'In-Built Commands'
+
+    MenuItem:
+        text: 'Operational Guide'
 
 
 <AppActionBar>:
@@ -19,13 +22,13 @@
     ActionView:
         use_separator: True
         ActionMenu:
-            title: 'AndroidApp'
+            title: 'Iris'
             with_previous: False
-            app_icon: 'atlas://data/images/defaulttheme/splitter_grip'
+            app_icon: 'zzz.jpg'
             on_press: self.menu()
         ActionOverflow:
         ActionQuit:
-            text: 'Fine'
+            text: 'X'
             icon: 'atlas://data/images/defaulttheme/close'
             on_press: self.menu()
 
@@ -39,9 +42,19 @@
     AppButton:
         id: bottone
         nome_bottone: bottone
-        text: 'AppExec'
+        text: 'Application'
         on_press: self.app_pushed()
         on_release: self.app_pushed()
+
+<PageFour>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    Label:
+        text: 'Operational Guide'
 
 <PageThree>:
     orientation: 'vertical'
@@ -61,7 +74,7 @@
         size_hint: (1., 0.1)
 
     Label:
-        text: 'due'
+        text: 'Recent Commands'
 
 <PageOne>:
     orientation: 'vertical'
@@ -71,4 +84,4 @@
         size_hint: (1., 0.1)
 
     Label:
-        text: 'applicazione'
+        text: 'Home Screen'

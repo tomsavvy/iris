@@ -1,9 +1,10 @@
 import kivy
 
 
-SidePanel_AppMenu = {'page one':['on_one',None],
-                     'page two':['on_two',None],
-                     'page three':['on_three',None],
+SidePanel_AppMenu = {'Home Page':['on_one',None],
+                     'Recent Commands':['on_two',None],
+                     'In-Built Commands':['on_three',None],
+                     'Operation Guide':['on_four',None]
                      }
 id_AppMenu_METHOD = 0
 id_AppMenu_PANEL = 1
@@ -67,6 +68,9 @@ class PageTwo(FloatLayout):
 class PageThree(FloatLayout):
     pass
 
+class PageFour(FloatLayout):
+    pass
+
 class AppButton(Button):
     nome_bottone = ObjectProperty(None)
     def app_pushed(self):
@@ -111,15 +115,22 @@ class AndroidApp(App):
         self.navigationdrawer.toggle_state()
 
     def on_one(self):
-        print 'UNO... exec'
-        self._switch_main_page('page one', PageOne)
+        print 'First Page Execution'
+        self._switch_main_page('Home Page', PageOne)
 
     def on_two(self):
-        print 'DUE... exec'
-        self._switch_main_page('page two', PageTwo)
+        print 'Second Page Execution'
+        self._switch_main_page('Recent Commands', PageTwo)
+        
     def on_three(self):
-        print 'TRE... exec'
-        self._switch_main_page('page three',  PageThree)
+        print 'Third Page Execution'
+        self._switch_main_page('In-Built Commands',  PageThree)
+
+    def on_four(self):
+        print 'Operational Guide'
+        self._switch_main_page('Operational Guide',  PageFour)
+
+
 
     def _switch_main_page(self, key,  panel):
         self.navigationdrawer.close_sidepanel()
