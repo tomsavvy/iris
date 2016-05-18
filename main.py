@@ -4,7 +4,7 @@ import kivy
 SidePanel_AppMenu = {'Home Page':['on_one',None],
                      'Recent Commands':['on_two',None],
                      'In-Built Commands':['on_three',None],
-                     'Operation Guide':['on_four',None]
+                     'Operational Guide':['on_four',None]
                      }
 id_AppMenu_METHOD = 0
 id_AppMenu_PANEL = 1
