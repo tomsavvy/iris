@@ -29,7 +29,6 @@
         ActionOverflow:
         ActionQuit:
             text: 'X'
-            icon: 'atlas://data/images/defaulttheme/close'
             on_press: self.menu()
 
 <MainPanel>:
@@ -79,9 +78,10 @@
 <PageOne>:
     orientation: 'vertical'
     spacing: 1
+    FloatLayout:
+        Label:          
+            text: '<Interpreted Text>'           
+            font_size: 20
 
     AppActionBar:
         size_hint: (1., 0.1)
-
-    Label:
-        text: 'Home Screen'

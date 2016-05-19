@@ -16,6 +16,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
 from kivy.properties import  ObjectProperty
+from kivy.uix.label import Label
+
 
 RootApp = None
 
@@ -35,8 +37,6 @@ class MenuItem(Button):
             print 'error in configuration of the menu'
             return
         getattr(RootApp, function_to_call)()
-
-#
 
 class AppActionBar(ActionBar):
     pass
