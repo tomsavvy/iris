@@ -1,5 +1,3 @@
-#:kivy 1.8.0
-
 <SidePanel>:
     orientation: 'vertical'
     spacing: 1
@@ -16,8 +14,14 @@
     MenuItem:
         text: 'Operational Guide'
 
-
+<GeneralSettings>:
+    orientation: 'vertical'
+    spacing: 1
+    background_color: (1, 1, 1, 1)
+    AppActionBar:
+    
 <AppActionBar>:
+    size_hint: (1., 0.1)
     pos_hint: {'top':1}
     ActionView:
         use_separator: True
@@ -31,57 +35,39 @@
             text: 'X'
             on_press: self.menu()
 
+<AppButton>:    
+    # color:(1, 1, 1)
+    text: 'Application'
+    on_press: self.app_pushed()
+    on_release: print 'Made You :P' + self.app_pushed()
+    Button:
+        pos: (250,250)
+    Image:
+        source: 'mic.jpg'
+        pos: (250,250)
+        allow_stretch: False       
+
 <MainPanel>:
     orientation: 'vertical'
     spacing: 1
-
+    background_color: (1, 1, 1, 1)
     AppActionBar:
-        size_hint: (1., 0.1)
-
     AppButton:
-        id: bottone
-        nome_bottone: bottone
-        text: 'Application'
-        on_press: self.app_pushed()
-        on_release: self.app_pushed()
-
+    
 <PageFour>:
-    orientation: 'vertical'
-    spacing: 1
-
-    AppActionBar:
-        size_hint: (1., 0.1)
-
+    GeneralSettings:
     Label:
         text: 'Operational Guide'
 
 <PageThree>:
-    orientation: 'vertical'
-    spacing: 1
-
-    AppActionBar:
-        size_hint: (1., 0.1)
-
+    GeneralSettings:
     Image:
         source: 'zz.jpg'
 
 <PageTwo>:
-    orientation: 'vertical'
-    spacing: 1
-
-    AppActionBar:
-        size_hint: (1., 0.1)
-
+    GeneralSettings:
     Label:
         text: 'Recent Commands'
 
 <PageOne>:
-    orientation: 'vertical'
-    spacing: 1
-    FloatLayout:
-        Label:          
-            text: '<Interpreted Text>'           
-            font_size: 20
-
-    AppActionBar:
-        size_hint: (1., 0.1)
+    MainPanel:

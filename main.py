@@ -18,10 +18,12 @@ from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
 from kivy.properties import  ObjectProperty
 from kivy.uix.label import Label
 
-
 RootApp = None
 
 class SidePanel(BoxLayout):
+    pass
+
+class GeneralSettings(FloatLayout):
     pass
 
 class MenuItem(Button):
@@ -72,10 +74,7 @@ class PageFour(FloatLayout):
     pass
 
 class AppButton(Button):
-    nome_bottone = ObjectProperty(None)
-    def app_pushed(self):
-        print self.text, 'button', self.nome_bottone.state
-
+    pass
 
 class NavDrawer(NavigationDrawer):
     def __init__(self, **kwargs):
