@@ -18,7 +18,12 @@ from kivy.uix.actionbar import ActionBar, ActionButton, ActionPrevious
 from kivy.properties import  ObjectProperty
 from kivy.uix.label import Label
 
+import speech_recognition as sr
+from jnius import cast
+from jnius import autoclass
+
 RootApp = None
+r = sr.Recognizer()
 
 class SidePanel(BoxLayout):
     pass
@@ -74,7 +79,7 @@ class PageFour(FloatLayout):
     pass
 
 class AppButton(Button):
-    pass
+    Builder.load_file('linker.py')
 
 class NavDrawer(NavigationDrawer):
     def __init__(self, **kwargs):
@@ -86,7 +91,6 @@ class NavDrawer(NavigationDrawer):
                 self.anim_to_state('closed')
             else:
                 self.state = 'closed'
-
 
 class AndroidApp(App):
 
@@ -140,7 +144,6 @@ class AndroidApp(App):
         self.navigationdrawer.add_widget(main_panel)      
         self.main_panel = main_panel
 
-
-
+   
 if __name__ == '__main__':
     AndroidApp().run()
