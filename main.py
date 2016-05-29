@@ -19,12 +19,15 @@ from kivy.properties import  ObjectProperty
 from kivy.uix.label import Label
 
 import speech_recognition as sr
-from jnius import cast
-from jnius import autoclass
+# from jnius import cast
+# from jnius import autoclass
 
 RootApp = None
 r = sr.Recognizer()
-said = r.recognize_google(audio)
+
+with sr.Microphone() as source:
+    audio = r.listen(source)
+    said = r.recognize_google(audio)
 
 class SidePanel(BoxLayout):
     pass
@@ -84,8 +87,8 @@ class AppButton(Button):
     def get_voice():
         import speech_recognition as sr
         r = sr.Recognizer()
-        with sr.Microphone() as source:
-            audio = r.listen(source)
+        # with sr.Microphone() as source:
+            # audio = r.listen(source)
 
     # to print the recognized commands
     def to_show(instance, value):
@@ -94,6 +97,7 @@ class AppButton(Button):
 
         except sr.UnknownValueError:
             print("Could not really get you. \n Kindly repeat",value)
+
         except sr.RequestError as e:
             print("Could not request results from Google Speech Recognition service; {0}".format(e),value)
     
@@ -156,8 +160,6 @@ class AndroidApp(App):
         print 'Operational Guide'
         self._switch_main_page('Operational Guide',  PageFour)
 
-
-
     def _switch_main_page(self, key,  panel):
         self.navigationdrawer.close_sidepanel()
         if not SidePanel_AppMenu[key][id_AppMenu_PANEL]:
@@ -167,9 +169,9 @@ class AndroidApp(App):
         self.navigationdrawer.add_widget(main_panel)      
         self.main_panel = main_panel
 
-Iris = autoclass('org.myapp.Iris')
-if said[0:4]=="open":
-    Iris.open(said[5:])
+# Iris = autoclass('org.myapp.Iris')
+# if said[0:4]=="open":
+#     Iris.open(said[5:])
    
 if __name__ == '__main__':
     AndroidApp().run()
