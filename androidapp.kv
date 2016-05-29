@@ -35,11 +35,17 @@
             text: 'X'
             on_press: self.menu()
 
+<bind_to_label>:
+
+
 <AppButton>:    
     # color:(1, 1, 1)
-    text: 'Application'
-    on_press: self.app_pushed()
-    on_release: print 'Made You :P' + self.app_pushed()
+    # text: 'Application'
+    on_press: self.get_voice()
+    # on_press: print 'Foo Bar'
+    on_release: pass
+    Label:
+        text: 'Say something'
     Button:
         pos: (250,250)
     Image:

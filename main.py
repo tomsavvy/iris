@@ -25,9 +25,9 @@ import speech_recognition as sr
 RootApp = None
 r = sr.Recognizer()
 
-with sr.Microphone() as source:
-    audio = r.listen(source)
-    said = r.recognize_google(audio)
+# with sr.Microphone() as source:
+#     audio = r.listen(source)
+#     said = r.recognize_google(audio)
 
 class SidePanel(BoxLayout):
     pass
@@ -84,14 +84,16 @@ class PageFour(FloatLayout):
 
 class AppButton(Button):
 
-    def get_voice():
+    def get_voice(self):
         import speech_recognition as sr
         r = sr.Recognizer()
-        # with sr.Microphone() as source:
-            # audio = r.listen(source)
-
+        with sr.Microphone() as source:
+            audio = r.listen(source)
+            said = r.recognize_google(audio)
+        # print 'boo'
+        self.to_show(said)
     # to print the recognized commands
-    def to_show(instance, value):
+    def to_show(self, value):
         try:
             print("You said:   " + said, value)
 
@@ -101,12 +103,6 @@ class AppButton(Button):
         except sr.RequestError as e:
             print("Could not request results from Google Speech Recognition service; {0}".format(e),value)
     
-    def bind_to_label(self):
-        # to bind on label
-        wig1 = Label(text='Say something')
-        wig1.bind(on_ref_press = get_voice)
-        wig2 = add_widget(Label)
-        wig2.bind(on_ref_press = to_show)
 
 class NavDrawer(NavigationDrawer):
     def __init__(self, **kwargs):
