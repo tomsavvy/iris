@@ -24,6 +24,7 @@ from jnius import autoclass
 
 RootApp = None
 r = sr.Recognizer()
+said = r.recognize_google(audio)
 
 class SidePanel(BoxLayout):
     pass
@@ -79,7 +80,29 @@ class PageFour(FloatLayout):
     pass
 
 class AppButton(Button):
-    Builder.load_file('linker.py')
+
+    def get_voice():
+        import speech_recognition as sr
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+            audio = r.listen(source)
+
+    # to print the recognized commands
+    def to_show(instance, value):
+        try:
+            print("You said:   " + said, value)
+
+        except sr.UnknownValueError:
+            print("Could not really get you. \n Kindly repeat",value)
+        except sr.RequestError as e:
+            print("Could not request results from Google Speech Recognition service; {0}".format(e),value)
+    
+    def bind_to_label(self):
+        # to bind on label
+        wig1 = Label(text='Say something')
+        wig1.bind(on_ref_press = get_voice)
+        wig2 = add_widget(Label)
+        wig2.bind(on_ref_press = to_show)
 
 class NavDrawer(NavigationDrawer):
     def __init__(self, **kwargs):
@@ -144,6 +167,9 @@ class AndroidApp(App):
         self.navigationdrawer.add_widget(main_panel)      
         self.main_panel = main_panel
 
+Iris = autoclass('org.myapp.Iris')
+if said[0:4]=="open":
+    Iris.open(said[5:])
    
 if __name__ == '__main__':
     AndroidApp().run()
